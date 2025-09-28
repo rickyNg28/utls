@@ -103,6 +103,8 @@ type clientHelloMsg struct {
 
 	// [uTLS]
 	NextProtoNeg bool
+
+	Raw []byte // original unmodified ClientHello for fingerprinting
 }
 
 func (m *clientHelloMsg) marshalMsg(echInner bool) ([]byte, error) {

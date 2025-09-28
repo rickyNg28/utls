@@ -1123,7 +1123,9 @@ func (c *Conn) unmarshalHandshakeMessage(data []byte, transcript transcriptHash)
 	case typeHelloRequest:
 		m = new(helloRequestMsg)
 	case typeClientHello:
-		m = new(clientHelloMsg)
+		cHello := new(clientHelloMsg)
+		cHello.Raw = data
+		m = cHello
 	case typeServerHello:
 		m = new(serverHelloMsg)
 	case typeNewSessionTicket:
